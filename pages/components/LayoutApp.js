@@ -10,7 +10,6 @@ const { Header, Content, Footer, Sider } = Layout;
 const { Title } = Typography;
 const { useBreakpoint } = Grid;
 
-
 export default function LayoutApps({ children }) {
   const screens = useBreakpoint();
 
@@ -45,7 +44,7 @@ export default function LayoutApps({ children }) {
         >
           <Menu theme="dark" mode="inline" style={{ minHeight: "100%" }}>
             <Menu.Item key="1" icon={<DashboardOutlined />}>
-              <Link href="/dashboard">Dashboard</Link>
+              <Link href="/">Dashboard</Link>
             </Menu.Item>
             <Menu.Item key="2" icon={<CalendarOutlined />}>
               <Link href="/events/event">Events</Link>
@@ -83,7 +82,7 @@ export default function LayoutApps({ children }) {
           padding: screens.xs ? "8px" : "16px",
         }}
       >
-       Event Management System ©2025 Created by Slyvia
+        Event Management System ©2025 Created by Slyvia
       </Footer>
     </Layout>
   );

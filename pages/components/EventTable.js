@@ -26,27 +26,26 @@ export default function EventTable({ events, onDelete }) {
       dataIndex: "status",
       key: "status",
       render: (status) => (
-        <Tag color={status === "completed" ? "green" : "orange"}>
-          {status}
-        </Tag>
+        <Tag color={status === "completed" ? "green" : "orange"}>{status}</Tag>
       ),
     },
     {
       title: "Action",
       key: "action",
       render: (_, record) => (
-        <Space>
-          <Button type="link" onClick={() => router.push(`/events/${record.id}`)}>
-            View
-          </Button>
-
+        <Space wrap>
           <Button
             type="link"
-            onClick={() => router.push(`/events/${record.id}?edit=true`)}
+            onClick={() => router.push(`/events/view/${record.id}`)}
+          >
+            View
+          </Button>
+          <Button
+            type="link"
+            onClick={() => router.push(`/events/${record.id}`)}
           >
             Edit
           </Button>
-
           <Button danger type="link" onClick={() => onDelete(record.id)}>
             Delete
           </Button>
@@ -56,11 +55,13 @@ export default function EventTable({ events, onDelete }) {
   ];
 
   return (
-    <Table
-      columns={columns}
-      dataSource={events}
-      rowKey={(record) => record.id}
-      pagination={{ pageSize: 5 }}
-    />
+    <div style={{ overflowX: "auto" }}>
+      <Table
+        columns={columns}
+        dataSource={events}
+        rowKey={(record) => record.id}
+        pagination={{ pageSize: 5 }}
+      />
+    </div>
   );
 }
